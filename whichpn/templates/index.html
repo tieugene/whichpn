@@ -1,0 +1,27 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title> {% trans "Which phone" %} &copy; im@eap.su </title>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    </head>
+    <body>
+       <form action="." method="POST">
+        <a href="{% url 'index' %}" title="Home"> &#8962; </a>
+            {% csrf_token %}
+            <label for="{{ form.phone.id_for_label }}">Phone: +7</label>
+            {{ form.phone }}
+            {{ form.snrange }}
+            <input type="submit" value="Find">
+            <a href="{% url 'index' %}"> <button type="button">Reset</button> </a>
+            {{ form.phone.errors }}
+            {{ form.non_field_errors }}
+       </form>
+       {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }} </p>
+            {% endfor %}
+       {% endif %}
+    </body>
+</html>

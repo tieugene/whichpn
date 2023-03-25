@@ -1,12 +1,14 @@
 # ToDo
 
+- endpoint
 - Contrib:
   - `local_settings-sample.py`
-  - Apache config
+  - `whichphone.spec`
+  - `whichphone.conf` (Apache)
+  + `setup.*` etc
 - Next:
-  + Maintain:
-    - chk (`pydocs`, `flake8`, `pylint` etc)
-    - `whichphne.spec`
-    - `setup.*` etc
+  * polish (`pydocs`, `flake8`, `pylint` etc)
+  * cron task
+  + remove SPECIAL (db only; fixture?)
   + Speedup csv import
   + i18n, l10n

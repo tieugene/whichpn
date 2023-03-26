@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 
@@ -24,17 +24,20 @@ class FindPhone(FormView):
 
 
 def endpoint(request):
-    if request.method == 'GET':
-        # print(request.GET)
-        if 'no' not in request.GET:
-            return HttpResponseBadRequest()
-        no = request.GET['no']
-        if not (isinstance(no, str) and no.isnumeric() and len(no) == 11 and no.startswith('7')):
-            return HttpResponseBadRequest()
-        no = int(no[1:])
-        if not (q := forms.find_snrange(no)):
-            return HttpResponseBadRequest()
-        print(q)
-        return HttpResponse()  # OK
-    else:
+    if request.method != 'GET':
         return HttpResponseNotAllowed('GET')
+    # print(request.GET)
+    if 'no' not in request.GET:
+        return HttpResponseBadRequest()
+    no = request.GET['no']
+    if not (isinstance(no, str) and no.isnumeric() and len(no) == 11 and no.startswith('7')):
+        return HttpResponseBadRequest()
+    ino = int(no[1:])
+    if not (q := forms.find_snrange(ino)):
+        return HttpResponseBadRequest()
+    # print(q)
+    return JsonResponse(
+        {'sn': int(no), 'opsos': q.opsos.name, 'region': q.region},
+        json_dumps_params={'ensure_ascii': False},
+        status=422
+    )

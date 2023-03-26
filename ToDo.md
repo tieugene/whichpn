@@ -1,6 +1,5 @@
 # ToDo
 
-- endpoint
 - Contrib:
   - `local_settings-sample.py`
   - `whichphone.spec`

@@ -1,4 +1,4 @@
-%global module whicpn
+%global module whichpn
 Name:		python-%{module}
 Version:	0.0.1
 Release:	1%{?dist}
@@ -38,10 +38,11 @@ Summary:	%{summary}
 %install
 %pyproject_install
 %pyproject_save_files %{module}
+# install %{module}.conf
 
 
 %files -n python3-%{module} -f %{pyproject_files}
-%doc README.md
+%doc README.md contrib/local_settings-sample.py
 %license LICENSE
 
 

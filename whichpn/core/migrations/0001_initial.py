@@ -31,7 +31,8 @@ class Migration(migrations.Migration):
                 ('beg', models.PositiveIntegerField(db_index=True, verbose_name='SN from')),
                 ('end', models.PositiveIntegerField(db_index=True, verbose_name='SN to')),
                 ('region', models.CharField(max_length=526, verbose_name='Region')),
-                ('opsos', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.opsos', verbose_name='OpSoS')),
+                ('opsos', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.opsos',
+                                            verbose_name='OpSoS')),
             ],
             options={
                 'verbose_name': 'SN Range',

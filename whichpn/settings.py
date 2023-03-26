@@ -6,7 +6,6 @@ from typing import Dict
 import os
 
 BASE_DIR = Path(__file__).resolve().parent
-ALLOWED_HOSTS = []
 INSTALLED_APPS = ('core',)
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
@@ -41,6 +40,7 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 # == <stubs> ==
 DEBUG = True
+ALLOWED_HOSTS = []
 SECRET_KEY = 'secretkey'
 DATABASES = {
     'default': {

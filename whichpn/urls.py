@@ -4,4 +4,5 @@ import views
 
 urlpatterns = [
     path('', views.FindPhone.as_view(), name='index'),
+    path('phone', views.endpoint, name='endpoint')
 ]
